@@ -1,4 +1,5 @@
-﻿using OlifransHealthCareERP.Core.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using OlifransHealthCareERP.Core.Domain;
 using OlifransHealthCareERP.Data.Context;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace OlifransHealthCareERP.Data.Repository
 {
     public class ClienteRepository  //Reponsavel pelo acesso aos dados
     {
-        private ContextDBOlifransHealthCare context;
+        private ContextDBOlifransHealthCare _context;
 
         public ClienteRepository(ContextDBOlifransHealthCare context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
-
+            return await _context.Clientes.AsNoTracking().ToListAsync(); //Retorna todos os clientes
         }
 
     }
