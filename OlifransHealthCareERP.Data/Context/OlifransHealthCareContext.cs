@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using OlifransHealthCareERP.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,6 @@ namespace OlifransHealthCareERP.Data.Context
 {
     class OlifransHealthCareContext : DbContext
     {
-        public OlifransHealthCareContext()
-        {
-                
-        }
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }
