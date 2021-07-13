@@ -23,5 +23,11 @@ namespace OlifransHealthCareERP.Data.Repository
             return await _context.Clientes.AsNoTracking().ToListAsync(); //Retorna todos os clientes
         }
 
+        public async Task<Cliente> GetClientesAsync(int id)
+        {           
+            return await _context.Clientes.FindAsync(id);
+        }
+
+
     }
 }
