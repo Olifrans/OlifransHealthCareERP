@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OlifransHealthCareERP.Core.Domain;
+using OlifransHealthCareERP.Manager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,46 +14,28 @@ namespace OlifransHealthCareERP.Api.Controllers
     [ApiController]
     public class ClientesController : ControllerBase
     {
-        // GET: api/<ClientesController> --> Busca uma lista ex: clientes
-        [HttpGet]
-        //public IEnumerable<Cliente> Get()
-        public IActionResult Get()
+        private IClienteManager _clienteManager;
+
+        public ClientesController(IClienteManager clienteManager)
         {
-            return Ok(new List<Cliente>()
-            {
-                new Cliente
-                {
-                    Id = 1,
-                    Nome = "Francis Oliveira",
-                    DataNascimento = new DateTime(1979, 02, 16)
-                },
-
-                new Cliente
-                {
-                    Id = 2,
-                    Nome = "Matheus Oliveira",
-                    DataNascimento = new DateTime(2007, 02, 16)
-                },
-
-                new Cliente
-                {
-                    Id = 2,
-                    Nome = "Samuel Oliveira",
-                    DataNascimento = new DateTime(2015, 02, 16)
-                },
-
-            });
+            this._clienteManager = clienteManager;
         }
 
-
-
+        // GET: api/<ClientesController> --> Busca uma lista ex: clientes
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _clienteManager.GetClientesAsync());           
+        }
 
         // GET api/<ClientesController>/5 --> Retorna um id especifico
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await _clienteManager.GetClientesAsync(id));
         }
+
+
 
         // POST api/<ClientesController> --> Inserção de um cliente --> objeto de cliente
         [HttpPost]

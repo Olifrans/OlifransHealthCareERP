@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OlifransHealthCareERP.Data.Context;
 using OlifransHealthCareERP.Data.Repository;
+using OlifransHealthCareERP.Manager.Implementation;
 using OlifransHealthCareERP.Manager.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace OlifransHealthCareERP.Api
             services.AddDbContext<ContextDBOlifransHealthCare>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ConexOlifransHealthCare")));
 
+            //Injeção de dependência
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteManager, ClienteManager>();
 
