@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OlifransHealthCareERP.Core\OlifransHealthCareERP.Core.csproj" />
+    <ProjectReference Include="..\OlifransHealthCareERP.Manager\OlifransHealthCareERP.Manager.csproj" />
   </ItemGroup>
 
 </Project>
