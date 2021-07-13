@@ -12,5 +12,10 @@ namespace OlifransHealthCareERP.Data.Context
     class OlifransHealthCareContext : DbContext
     {
         public DbSet<Cliente> Clientes { get; set; }
+
+        public OlifransHealthCareContext(DbContextOptions options) : base(options)
+        {
+                
+        }
     }
 }
