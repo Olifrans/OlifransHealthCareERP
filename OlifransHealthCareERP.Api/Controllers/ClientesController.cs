@@ -37,6 +37,13 @@ namespace OlifransHealthCareERP.Api.Controllers
 
 
 
+
+
+
+
+
+
+
         // POST api/<ClientesController> --> Inserção de um cliente --> objeto de cliente
         [HttpPost]
         public void Post([FromBody] string value)
