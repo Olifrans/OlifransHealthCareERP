@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OlifransHealthCareERP.Data.Repository
 {
-    public class ClienteRepository  //Reponsavel pelo acesso aos dados
+    public class ClienteRepository : IClienteRepository  //Reponsavel pelo acesso aos dados
     {
         private ContextDBOlifransHealthCare _context;
 
