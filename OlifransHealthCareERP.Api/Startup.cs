@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OlifransHealthCareERP.Data.Context;
+using OlifransHealthCareERP.Data.Repository;
+using OlifransHealthCareERP.Manager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +35,9 @@ namespace OlifransHealthCareERP.Api
 
             services.AddDbContext<ContextDBOlifransHealthCare>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ConexOlifransHealthCare")));
+
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClienteManager, ClienteManager>();
 
 
             services.AddSwaggerGen(c =>

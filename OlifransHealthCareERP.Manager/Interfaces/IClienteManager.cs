@@ -1,13 +1,13 @@
-﻿using System;
+﻿using OlifransHealthCareERP.Core.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OlifransHealthCareERP.Core.Domain;
 
 namespace OlifransHealthCareERP.Manager.Interfaces
 {
-    public interface IClienteRepository  //Regras de negócios
+    public interface IClienteManager
     {
         Task<IEnumerable<Cliente>> GetClientesAsync();
 
