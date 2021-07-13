@@ -45,6 +45,7 @@ namespace OlifransHealthCareERP.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "OlifransHealthCareERP.Api v1"));
             }
 
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
