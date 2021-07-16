@@ -13,6 +13,7 @@ using OlifransHealthCareERP.Data.Context;
 using OlifransHealthCareERP.Data.Repository;
 using OlifransHealthCareERP.Manager.Implementation;
 using OlifransHealthCareERP.Manager.Interfaces;
+using OlifransHealthCareERP.Manager.Mappings;
 using OlifransHealthCareERP.Manager.Validator;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,8 @@ namespace OlifransHealthCareERP.Api
                     p.RegisterValidatorsFromAssemblyContaining<ClienteValidator>();
                     p.ValidatorOptions.LanguageManager.Culture = new System.Globalization.CultureInfo("pt-BR"); //Retorno do idioma de  mensagem do validor
                 });  //Validação do FluentValidation
+
+            services.AddAutoMapper(typeof(ClienteNovoMappingProfile)); //Auto Mapping
 
 
             services.AddDbContext<ContextDBOlifransHealthCare>(options =>

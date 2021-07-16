@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OlifransHealthCareERP.Core.Domain;
+using OlifransHealthCareERP.CoreShared.ModelViews;
 using OlifransHealthCareERP.Manager.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -37,10 +38,10 @@ namespace OlifransHealthCareERP.Api.Controllers
 
         // POST api/<ClientesController> --> Inserção de um cliente --> objeto de cliente
         [HttpPost]
-        public async Task<IActionResult> Post(Cliente cliente)
+        public async Task<IActionResult> Post(ClienteNovo clientenovo)
         {
-            var clienteInserido = await _clienteManager.InsertClientesAsync(cliente);
-            return CreatedAtAction(nameof(Get), new { id = cliente.Id }, cliente); //Api status post 201
+            var clienteInserido = await _clienteManager.InsertClientesAsync(clientenovo);
+            return CreatedAtAction(nameof(Get), new { id = clienteInserido.Id }, clienteInserido); //Api status post 201
 
         }
 

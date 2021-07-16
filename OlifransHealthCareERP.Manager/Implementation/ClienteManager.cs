@@ -1,4 +1,5 @@
 ﻿using OlifransHealthCareERP.Core.Domain;
+using OlifransHealthCareERP.CoreShared.ModelViews;
 using OlifransHealthCareERP.Manager.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace OlifransHealthCareERP.Manager.Implementation
             await _clienteRepository.DeletClientesAsync(id);
         }
 
-        public async Task<Cliente> InsertClientesAsync(Cliente cliente)
+        public async Task<Cliente> InsertClientesAsync(ClienteNovo cliente)
         {
             return await _clienteRepository.InsertClientesAsync(cliente);
         }
