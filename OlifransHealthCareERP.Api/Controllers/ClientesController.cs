@@ -49,7 +49,7 @@ namespace OlifransHealthCareERP.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Cliente cliente)
         {
-            var clienteAtualizado = await _clienteManager.InsertClientesAsync(cliente);
+            var clienteAtualizado = await _clienteManager.UpdateClientesAsync(cliente);
             if (clienteAtualizado == null)
             {
                 return NotFound(); //Api status post 404

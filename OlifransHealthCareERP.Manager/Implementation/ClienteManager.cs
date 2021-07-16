@@ -36,11 +36,15 @@ namespace OlifransHealthCareERP.Manager.Implementation
             await _clienteRepository.DeletClientesAsync(id);
         }
 
+
+
         public async Task<Cliente> InsertClientesAsync(ClienteNovo clientenovo)
         {
             var cliente = _mapper.Map<Cliente>(clientenovo);
             return await _clienteRepository.InsertClientesAsync(cliente);
         }
+
+
 
         public async Task<Cliente> UpdateClientesAsync(Cliente cliente)
         {
