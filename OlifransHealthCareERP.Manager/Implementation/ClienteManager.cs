@@ -1,4 +1,5 @@
-﻿using OlifransHealthCareERP.Core.Domain;
+﻿using AutoMapper;
+using OlifransHealthCareERP.Core.Domain;
 using OlifransHealthCareERP.CoreShared.ModelViews;
 using OlifransHealthCareERP.Manager.Interfaces;
 using System;
@@ -12,11 +13,13 @@ namespace OlifransHealthCareERP.Manager.Implementation
     public class ClienteManager : IClienteManager
     {
         private IClienteRepository _clienteRepository;
+        private IMapper _mapper;
 
-        public ClienteManager(IClienteRepository clienteRepository)
+        public ClienteManager(IClienteRepository clienteRepository, IMapper mapper)
         {
             this._clienteRepository = clienteRepository;
-        }             
+            this._mapper = mapper;
+        }           
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
@@ -33,8 +36,9 @@ namespace OlifransHealthCareERP.Manager.Implementation
             await _clienteRepository.DeletClientesAsync(id);
         }
 
-        public async Task<Cliente> InsertClientesAsync(ClienteNovo cliente)
+        public async Task<Cliente> InsertClientesAsync(ClienteNovo clientenovo)
         {
+            var cliente = _mapper.Map<Cliente>(clientenovo);
             return await _clienteRepository.InsertClientesAsync(cliente);
         }
 

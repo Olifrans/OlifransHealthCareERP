@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using OlifransHealthCareERP.Core.Domain;
+using OlifransHealthCareERP.CoreShared.ModelViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace OlifransHealthCareERP.Manager.Validator
 {
-    public class ClienteValidator : AbstractValidator<Cliente>
+    public class ClienteNovoValidator : AbstractValidator<ClienteNovo>
     {
-        public ClienteValidator()
+        public ClienteNovoValidator()
         {
             RuleFor(x => x.Nome).NotNull().NotEmpty().MinimumLength(5).MaximumLength(150);
             RuleFor(x => x.DataNascimento).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));
