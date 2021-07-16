@@ -13,7 +13,9 @@ namespace OlifransHealthCareERP.Manager.Mappings
     {
         public ClienteNovoMappingProfile()
         {
-            CreateMap<ClienteNovo, Cliente>();;                
+            CreateMap<ClienteNovo, Cliente>()
+                .ForMember(d => d.Criacao, o => o.MapFrom(x => DateTime.Now)) //Add de craição automatica
+                .ForMember(d => d.DataNascimento, o => o.MapFrom(x => x.DataNascimento)); //Data de nascimento
         }
     }
 }
