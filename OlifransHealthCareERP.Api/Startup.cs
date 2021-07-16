@@ -34,7 +34,11 @@ namespace OlifransHealthCareERP.Api
         public void ConfigureServices(IServiceCollection services)
         {           
             services.AddControllers()
-                .AddFluentValidation(p=>p.RegisterValidatorsFromAssemblyContaining<ClienteValidator>());  //Validadção do FluentValidation
+                .AddFluentValidation(p=>
+                { 
+                    p.RegisterValidatorsFromAssemblyContaining<ClienteValidator>();
+                    p.ValidatorOptions.LanguageManager.Culture = new System.Globalization.CultureInfo("pt-BR"); //Retorno do idioma de  mensagem do validor
+                });  //Validação do FluentValidation
 
 
             services.AddDbContext<ContextDBOlifransHealthCare>(options =>

@@ -12,7 +12,7 @@ namespace OlifransHealthCareERP.Manager.Validator
     {
         public ClienteValidator()
         {
-            RuleFor(x => x.Nome).NotNull().NotEmpty().MinimumLength(10).MaximumLength(150);
+            RuleFor(x => x.Nome).NotNull().NotEmpty().MinimumLength(5).MaximumLength(150);
             RuleFor(x => x.DataNascimento).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));
             RuleFor(x => x.Documento).NotNull().NotEmpty().MinimumLength(4).MaximumLength(14);
             RuleFor(x => x.Telefone).NotNull().NotEmpty().Matches("[2-9][0-9]{10}").WithMessage("O telefone tem que tem o formato de [2-9][0-9]{10}");
