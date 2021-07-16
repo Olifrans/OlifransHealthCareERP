@@ -29,24 +29,34 @@ namespace OlifransHealthCareERP.Data.Repository
             return await _context.Clientes.FindAsync(id);
         }
 
+
         //Insert
-        public async Task<Cliente> IsertClientesAsync(Cliente cliente)
+        public async Task<Cliente> InsertClientesAsync(Cliente cliente)
         {
             await _context.Clientes.AddAsync(cliente);
             await _context.SaveChangesAsync();
             return cliente;
         }
 
-
-
         //Update
-
-
         public async Task<Cliente> UpdateClientesAsync(Cliente cliente)
         {
-            await _context.Clientes.Update(cliente);
+            var clienteConsultado = await _context.Clientes.FindAsync(cliente.Id);
+            if (clienteConsultado == null)
+            {
+                return null;
+            }
+            _context.Entry(clienteConsultado).CurrentValues.SetValues(cliente);           
+            await _context.SaveChangesAsync();
+            return clienteConsultado;
         }
 
-        //Delet
+        //Delete
+        public async Task DeletClientesAsync(int id)
+        {
+            var clienteConsultado = await _context.Clientes.FindAsync(id);
+            _context.Clientes.Remove(clienteConsultado);
+            await _context.SaveChangesAsync();
+        }
     }
 }

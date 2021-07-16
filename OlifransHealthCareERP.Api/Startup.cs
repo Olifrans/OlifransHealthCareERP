@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using OlifransHealthCareERP.Data.Context;
 using OlifransHealthCareERP.Data.Repository;
 using OlifransHealthCareERP.Manager.Implementation;
 using OlifransHealthCareERP.Manager.Interfaces;
+using OlifransHealthCareERP.Manager.Validator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +33,8 @@ namespace OlifransHealthCareERP.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {           
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(p=>p.RegisterValidatorsFromAssemblyContaining<ClienteValidator>());  //Validadção do FluentValidation
 
 
             services.AddDbContext<ContextDBOlifransHealthCare>(options =>

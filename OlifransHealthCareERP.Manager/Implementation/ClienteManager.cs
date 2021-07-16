@@ -15,8 +15,7 @@ namespace OlifransHealthCareERP.Manager.Implementation
         public ClienteManager(IClienteRepository clienteRepository)
         {
             this._clienteRepository = clienteRepository;
-        }
-
+        }             
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
@@ -26,6 +25,21 @@ namespace OlifransHealthCareERP.Manager.Implementation
         public async Task<Cliente> GetClientesAsync(int id)
         {
             return await _clienteRepository.GetClientesAsync(id);
+        }
+
+        public async Task DeletClientesAsync(int id)
+        {
+            await _clienteRepository.DeletClientesAsync(id);
+        }
+
+        public async Task<Cliente> InsertClientesAsync(Cliente cliente)
+        {
+            return await _clienteRepository.InsertClientesAsync(cliente);
+        }
+
+        public async Task<Cliente> UpdateClientesAsync(Cliente cliente)
+        {
+            return await _clienteRepository.UpdateClientesAsync(cliente);
         }
     }
 }

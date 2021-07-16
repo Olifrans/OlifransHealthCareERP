@@ -25,41 +25,43 @@ namespace OlifransHealthCareERP.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _clienteManager.GetClientesAsync());           
+            return Ok(await _clienteManager.GetClientesAsync()); //Api status post 200           
         }
 
         // GET api/<ClientesController>/5 --> Retorna um id especifico
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok(await _clienteManager.GetClientesAsync(id));
+            return Ok(await _clienteManager.GetClientesAsync(id));  //Api status post 200
         }
-
-
-
-
-
-
-
-
-
 
         // POST api/<ClientesController> --> Inserção de um cliente --> objeto de cliente
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post(Cliente cliente)
         {
+            var clienteInserido = await _clienteManager.InsertClientesAsync(cliente);
+            return CreatedAtAction(nameof(Get), new { id = cliente.Id }, cliente); //Api status post 201
+
         }
 
         // PUT api/<ClientesController>/5  Crud update
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Cliente cliente)
         {
+            var clienteAtualizado = await _clienteManager.InsertClientesAsync(cliente);
+            if (clienteAtualizado == null)
+            {
+                return NotFound(); //Api status post 404
+            }
+            return Ok(clienteAtualizado); //Api status post 200
         }
 
         // DELETE api/<ClientesController>/5  Deleta cliente
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            await _clienteManager.DeletClientesAsync(id);
+            return NoContent();
         }
     }
 }
