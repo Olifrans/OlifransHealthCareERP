@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OlifransHealthCareERP.Data.Context;
 
 namespace OlifransHealthCareERP.Data.Migrations
 {
     [DbContext(typeof(ContextDBOlifransHealthCare))]
-    partial class ContextDBOlifransHealthCareModelSnapshot : ModelSnapshot
+    [Migration("20210716111856_Cliente_Data_Criacao_Atualizacao")]
+    partial class Cliente_Data_Criacao_Atualizacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
