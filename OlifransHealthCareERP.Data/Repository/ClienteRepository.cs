@@ -24,6 +24,7 @@ namespace OlifransHealthCareERP.Data.Repository
             return await _context.Clientes.AsNoTracking().ToListAsync();
         }
 
+
         public async Task<Cliente> GetClientesAsync(int id)
         {           
             return await _context.Clientes.FindAsync(id);
@@ -52,7 +53,7 @@ namespace OlifransHealthCareERP.Data.Repository
         }
 
         //Delete
-        public async Task DeletClientesAsync(int id)
+        public async Task DeleteClientesAsync(int id)
         {
             var clienteConsultado = await _context.Clientes.FindAsync(id);
             _context.Clientes.Remove(clienteConsultado);

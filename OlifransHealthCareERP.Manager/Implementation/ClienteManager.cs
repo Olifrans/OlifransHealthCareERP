@@ -26,14 +26,19 @@ namespace OlifransHealthCareERP.Manager.Implementation
             return await _clienteRepository.GetClientesAsync();
         }
 
+
+
         public async Task<Cliente> GetClientesAsync(int id)
         {
             return await _clienteRepository.GetClientesAsync(id);
         }
 
-        public async Task DeletClientesAsync(int id)
+
+
+
+        public async Task DeleteClientesAsync(int id)
         {
-            await _clienteRepository.DeletClientesAsync(id);
+            await _clienteRepository.DeleteClientesAsync(id);
         }
 
 

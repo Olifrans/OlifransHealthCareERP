@@ -10,14 +10,15 @@ namespace OlifransHealthCareERP.Manager.Interfaces
 {
     public interface IClienteManager
     {
-        Task DeletClientesAsync(int id);
 
-        Task<Cliente> GetClientesAsync(int id);
+        Task<IEnumerable<Cliente>> GetClientesAsync();
 
-        Task<IEnumerable<Cliente>> GetClientesAsync();        
+        Task<Cliente> GetClientesAsync(int id);  
 
         Task<Cliente> InsertClientesAsync(ClienteNovo cliente);
 
         Task<Cliente> UpdateClientesAsync(Cliente cliente);
+
+        Task DeleteClientesAsync(int id);
     }
 }

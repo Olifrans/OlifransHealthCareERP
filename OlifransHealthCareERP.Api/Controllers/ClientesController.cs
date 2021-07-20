@@ -42,7 +42,6 @@ namespace OlifransHealthCareERP.Api.Controllers
         {
             var clienteInserido = await _clienteManager.InsertClientesAsync(clientenovo);
             return CreatedAtAction(nameof(Get), new { id = clienteInserido.Id }, clienteInserido); //Api status post 201
-
         }
 
         // PUT api/<ClientesController>/5  Crud update
